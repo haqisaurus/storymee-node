@@ -1,0 +1,46 @@
+{
+    "name": "storymee",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "ts": "ts-node ./src/index.ts",
+        "start": "nodemon -e ts,ejs,json  --watch ./src --exec ts-node ./src/index.ts",
+        "serve": "nodemon -e ts,ejs,json  --watch ./src --exec ts-node ./src/index.ts",
+        "startq": " cross-env PORT=13004 nodemon ./src/index.ts  ",
+        "start1": "cross-env PORT=13004 nodemon --watch ./src/**/*.ts --exec ts-node ./src/index.ts",
+        "start2": "cross-env PORT=13005 nodemon --watch ./src/**/*.ts --exec ts-node ./src/index.ts",
+        "start:Server": "tsc && node ./lib/index.js",
+        "build": "rimraf ./build && tsc && cpx ./src/credential.json ./build"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/bcrypt": "^5.0.0",
+        "@types/cors": "^2.8.12",
+        "@types/express": "^4.17.13",
+        "@types/jsonwebtoken": "^8.5.6",
+        "@types/morgan": "^1.9.3",
+        "@types/node": "^17.0.0",
+        "@types/nodemailer": "^6.4.4",
+        "nodemon": "^2.0.15",
+        "ts-node": "^10.4.0",
+        "tslib": "^2.3.1",
+        "typescript": "^4.5.4"
+    },
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "body-parser": "^1.19.1",
+        "cors": "^2.8.5",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.2",
+        "express-validator": "^6.14.0",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^6.1.2",
+        "morgan": "^1.10.0",
+        "nodemailer": "^6.7.2",
+        "slugify": "^1.6.4"
+    }
+}
