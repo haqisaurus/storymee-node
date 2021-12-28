@@ -11,7 +11,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT;
 var corsOptions = {
-    origin: ["http://localhost:3000", "https://storymee.com"],
+    origin: ["http://localhost:3000", "https://storymee.com", "https://www.storymee.com"],
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 app.use(bodyParser.json());
