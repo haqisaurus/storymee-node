@@ -12,7 +12,7 @@
         "start1": "cross-env PORT=13004 nodemon --watch ./src/**/*.ts --exec ts-node ./src/index.ts",
         "start2": "cross-env PORT=13005 nodemon --watch ./src/**/*.ts --exec ts-node ./src/index.ts",
         "start:Server": "tsc && node ./lib/index.js",
-        "build": "rimraf ./build && tsc && cpx ./src/credential.json ./build"
+        "build": "rimraf ./build && tsc"
     },
     "keywords": [],
     "author": "",
