@@ -6,7 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "ts": "ts-node ./src/index.ts",
-        "start": "nodemon -e ts,ejs,json  --watch ./src --exec ts-node ./src/index.ts",
+        "start": "node ./build/index.js",
         "serve": "nodemon -e ts,ejs,json  --watch ./src --exec ts-node ./src/index.ts",
         "startq": " cross-env PORT=13004 nodemon ./src/index.ts  ",
         "start1": "cross-env PORT=13004 nodemon --watch ./src/**/*.ts --exec ts-node ./src/index.ts",
