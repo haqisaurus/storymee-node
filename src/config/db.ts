@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-const mongoUrl: any = process.env.MONGO_DB;
-console.log(mongoUrl);
+
 export const connectDB = async () => {
+    const mongoUrl: any = process.env.MONGO_DB;
     await mongoose.connect(mongoUrl);
 };
