@@ -3,6 +3,22 @@ import { Post, User } from "../model/model";
 import slugify from "slugify";
 import { makeid } from "../config/util";
 
+export async function getPostDetailID(req: any, res: any) {
+    const userID = req.app.get("userID");
+    const postID = req.params.postID;
+    const post = await Post.findOne({ _id: postID, "creator.userId": userID });
+    console.log(userID, postID);
+    res.json({
+        title: post.title,
+        content: post.content,
+        privilage: post.privilage,
+        type: post.type,
+        images: post.images,
+        hashTags: post.hashTags,
+        coordinate: post.coordinate,
+        mentions: post.mentions,
+    });
+}
 export async function getPostDetail(req: any, res: any) {
     const slug = req.params.slug;
     const post = await Post.findOne({ slug: slug });
@@ -35,7 +51,14 @@ export async function postNewPost(req: any, res: any) {
         username: currentUser.username,
         photo: currentUser.photo,
     };
-    const post = new Post(body);
+    let post = new Post(body);
+    if (body.id) {
+        const userID = req.app.get("userID");
+        post = await Post.findOne({ _id: body.id, "creator.userId": userID });
+        if (!post) {
+            return res.status(400).json({ errors: "Invalid id" });
+        }
+    }
     post.title = body.title;
     post.content = body.content;
     post.privilage = body.privilage;
@@ -52,6 +75,7 @@ export async function postNewPost(req: any, res: any) {
             userId: e.userID,
             username: e.username,
             photo: e.photo,
+            count: e.count,
         };
         post.mentions.push(mention);
     });

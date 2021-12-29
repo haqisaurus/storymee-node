@@ -1,7 +1,7 @@
 import { getGenerateSiteMap, index } from "../controller";
 import { postLogin, postRegister } from "../controller/auth";
 import { getHome } from "../controller/home";
-import { getMyPost, getPostDetail, postNewPost } from "../controller/post";
+import { getMyPost, getPostDetail, getPostDetailID, postNewPost } from "../controller/post";
 import { getProfile, getSetting } from "../controller/user";
 import { isAuth } from "./middleware";
 import { body } from "express-validator";
@@ -18,6 +18,7 @@ export function router(app: any) {
     );
     app.get("/api/v1/my-posts", isAuth, getMyPost);
     app.get("/api/v1/post/:slug", getPostDetail);
+    app.get("/api/v1/post/:postID/id", isAuth, getPostDetailID);
     app.get("/api/v1/sitemap", getGenerateSiteMap);
     app.get("/", index);
     app.get("/home", getHome);

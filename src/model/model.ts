@@ -18,7 +18,7 @@ const user = new mongoose.Schema({
 export const User = mongoose.model("User", user);
 const creator = new mongoose.Schema({ userId: mongoose.Types.ObjectId, username: "string", photo: String });
 const comment = new mongoose.Schema({ username: String, comment: String, likes: [mongoose.Types.ObjectId], dislikes: [mongoose.Types.ObjectId] });
-const mention = new mongoose.Schema({ userId: mongoose.Types.ObjectId, username: "string", photo: String });
+const mention = new mongoose.Schema({ userId: mongoose.Types.ObjectId, username: "string", photo: String, count: Number });
 const cordinate = new mongoose.Schema({ longitude: mongoose.Types.Decimal128, latitude: mongoose.Types.Decimal128 });
 const post = new mongoose.Schema({
     title: String,
