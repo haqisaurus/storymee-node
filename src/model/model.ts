@@ -29,7 +29,7 @@ const post = new mongoose.Schema({
     slug: String,
     rating: mongoose.Types.Decimal128,
     creator: creator,
-    images: [String],
+    medias: [String],
     hashTags: [String],
     mentions: [mention],
     coordinate: cordinate,

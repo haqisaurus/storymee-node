@@ -17,6 +17,7 @@ export async function getPostDetailID(req: any, res: any) {
         hashTags: post.hashTags,
         coordinate: post.coordinate,
         mentions: post.mentions,
+        medias: post.medias,
     });
 }
 export async function getPostDetail(req: any, res: any) {
