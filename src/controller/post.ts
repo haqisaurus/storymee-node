@@ -45,6 +45,8 @@ export async function postNewPost(req: any, res: any) {
     if (checkpost > 0) {
         slug = slugify(body.title + " " + makeid(10));
     }
+    // start transaction
+
     const userID = req.app.get("userID");
     const currentUser = await User.findOne({ _id: userID });
     const creator = {
@@ -60,9 +62,11 @@ export async function postNewPost(req: any, res: any) {
             return res.status(400).json({ errors: "Invalid id" });
         }
     }
+
     post.title = body.title;
     post.content = body.content;
     post.privilage = body.privilage;
+    post.previousPostID = body.previousID;
     post.type = "ARTICLE";
     post.status = "PUBLISHED";
     post.rating = 0;
@@ -85,6 +89,13 @@ export async function postNewPost(req: any, res: any) {
         post.hashTags.push(e.trim());
     });
     await post.save();
+    // search previours post
+    if (body.previousID) {
+        const prevPost = await Post.findOne({ _id: body.previousID, "creator.userId": userID });
+        prevPost.nextPostID = post.id;
+        await prevPost.save();
+    }
+
     res.json({
         message: "Posted",
     });

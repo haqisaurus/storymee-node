@@ -35,6 +35,7 @@ const post = new mongoose.Schema({
     coordinate: cordinate,
     serialID: mongoose.Types.ObjectId,
     previousPostID: mongoose.Types.ObjectId,
+    nextPostID: mongoose.Types.ObjectId,
     comments: [comment],
     allowComment: Boolean,
     likes: [mongoose.Types.ObjectId],
